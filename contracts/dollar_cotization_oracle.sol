@@ -41,10 +41,10 @@ contract cotization_oracle {
     currencyMap[currency].value_buy = _value_buy;
   }
 
-  function getCurrencyCotization() constant public payable
+  function getCurrencyCotization(string _currency) constant public payable
   returns (uint timestamp, string value_avg,  string value_sell,  string value_buy) {
     require(msg.value >= fee);
-    return  (currencyMap[currency].timestamp, currencyMap[currency].value_avg, currencyMap[currency].value_sell, currencyMap[currency].value_buy);
+    return  (currencyMap[_currency].timestamp, currencyMap[_currency].value_avg, currencyMap[_currency].value_sell, currencyMap[_currency].value_buy);
   }
 
   function updateFee (uint value) onlyOwnerOrOperator {
